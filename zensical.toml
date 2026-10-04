@@ -1,0 +1,7 @@
+[project]
+site_name = "ピタゴラゲーム ドキュメント"
+docs_dir = "content"
+site_dir = "docs"
+
+[project.theme]
+language = "ja"
