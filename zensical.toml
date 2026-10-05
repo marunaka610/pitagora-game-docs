@@ -2,6 +2,10 @@
 site_name = "ピタゴラゲーム ドキュメント"
 docs_dir = "content"
 site_dir = "docs"
+nav = [
+  { "ホーム" = "index.md" },
+  { "仕様書" = "SPECIFICATIONS.md" },
+]
 
 [project.theme]
 language = "ja"
