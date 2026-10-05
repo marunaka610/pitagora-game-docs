@@ -6,12 +6,10 @@ Pitagora Simulator は、物理現象や音響現象を操作しながら学べ�
 
 ### 技術スタック
 
-- TypeScript（strict mode）
-- Vite
-- Phaser
-- Matter.js
-
-各ライブラリのバージョンはアプリケーションの依存関係で管理します。
+- TypeScript 7.0.2（strict mode）
+- Vite 8.3.2
+- Phaser 4.2.1
+- Matter.js 0.20.0
 
 ## 2. アーキテクチャ
 
