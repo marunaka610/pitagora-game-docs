@@ -1,4 +1,4 @@
-# Pitagora Simulator 仕様書
+# Pitagora Simulator フレームワーク
 
 ## 1. プロジェクト概要
 
