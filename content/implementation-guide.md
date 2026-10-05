@@ -1,4 +1,4 @@
-# Pitagora Simulator 仕様書
+# Pitagora Simulator フレームワーク
 
 ## 1. プロジェクト概要
 
@@ -27,17 +27,11 @@ Pitagora Simulator は、物理現象や音響現象を操作しながら学べ�
 
 ## 3. シミュレーション
 
-### 3.1 物体落下（Drop Simulation）
+シミュレーションごとの目的、表示、操作、状態遷移を個別ページに定めます。共通の画面構成とルーティングは本書、シミュレーション固有の仕様は以下を参照してください。
 
-トップページで提供する既存のシミュレーションです。Phaser の描画と Matter.js の物理演算を使って物体の落下を表現し、既存の `GameScene.ts` と `GameSceneControls.ts` の機能を維持したまま共通コンテナに組み込みます。
-
-### 3.2 音波フーリエ解析（Audio Fourier Analysis）
-
-音波を入力・生成し、その波形と周波数成分を可視化するシミュレーションです。入力条件を変更すると波形と解析結果を更新し、時間領域と周波数領域の関係を比較できるようにします。入力方式、解析パラメーター、表示形式の詳細は、このシミュレーションの実装時に決定します。
-
-### 3.3 共鳴現象（Resonance Phenomenon）
-
-外力の周期と系の固有振動数の関係によって振幅が変化する現象を可視化するシミュレーションです。外力の周期などの条件を操作し、応答の変化を観察できるようにします。対象とする系、物理パラメーター、解析・表示方法の詳細は実装時に決定します。
+- **3.1 [物体落下（Drop Simulation）](specifications/simulations/drop.md):** 既存の落下シミュレーションを共通コンテナへ統合します。
+- **3.2 [音波フーリエ解析（Audio Fourier Analysis）](specifications/simulations/audio-fourier.md):** 入力信号の波形と周波数成分を比較します。
+- **3.3 [共鳴現象（Resonance Phenomenon）](specifications/simulations/resonance.md):** 外力の周期と系の応答の関係を観察します。
 
 ## 4. ルーティング
 
@@ -45,9 +39,9 @@ Pitagora Simulator は、物理現象や音響現象を操作しながら学べ�
 
 | URL | ページ |
 | --- | --- |
-| `/` | Drop Simulation |
-| `/audio` | Audio Fourier Analysis |
-| `/resonance` | Resonance Phenomenon |
+| `/` | [Drop Simulation](specifications/simulations/drop.md) |
+| `/audio` | [Audio Fourier Analysis](specifications/simulations/audio-fourier.md) |
+| `/resonance` | [Resonance Phenomenon](specifications/simulations/resonance.md) |
 | `/#/settings` | Settings |
 | `/#/about` | About |
 
@@ -82,9 +76,9 @@ Settings と About はハッシュルートを使用します。未知のパス�
 
 ## 6. 実装フェーズ
 
-1. **共通フレームワーク** — ハンバーガーメニュー、ルーティング、共通コンテナを実装し、既存の物体落下シミュレーションを統合する。
-2. **音波フーリエ解析** — 入力・解析・可視化を実装し、共通コンテナに組み込む。
-3. **共鳴現象** — 現象のモデル、操作項目、可視化を定めて実装する。
+1. **共通フレームワーク** — ハンバーガーメニュー、ルーティング、共通コンテナを実装し、[物体落下シミュレーション](specifications/simulations/drop.md)を統合する。
+2. **音波フーリエ解析** — [個別仕様](specifications/simulations/audio-fourier.md)に従って入力・解析・可視化を実装し、共通コンテナに組み込む。
+3. **共鳴現象** — [個別仕様](specifications/simulations/resonance.md)に従ってモデル、操作項目、可視化を実装する。
 4. **仕上げ** — レスポンシブ表示、キーボード操作、各画面の動作を確認する。
 
 ## 7. 技術上の検討事項

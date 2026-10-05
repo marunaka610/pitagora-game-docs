@@ -9,28 +9,28 @@
       
       
       
-        <link rel="prev" href="../3-3-clear-and-results/">
+        <link rel="prev" href="../drop/">
       
       
-        <link rel="next" href="../../development-flow/">
+        <link rel="next" href="../resonance/">
       
       
         
       
       
-      <link rel="icon" href="../../assets/images/favicon.png">
+      <link rel="icon" href="../../../assets/images/favicon.png">
       <meta name="generator" content="zensical-0.0.67">
     
     
       
-        <title>4・5. 共通仕様 - ピタゴラゲーム ドキュメント</title>
+        <title>音波フーリエ解析 - ピタゴラゲーム ドキュメント</title>
       
     
     
       
         
       
-      <link rel="stylesheet" href="../../assets/stylesheets/modern/main.4ae390e2.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/modern/main.4ae390e2.min.css">
       
       
 
@@ -49,7 +49,7 @@
       
     
     
-    <script>__md_scope=new URL("../..",location),__md_scope.pathname.endsWith("/")||(__md_scope=new URL(__md_scope.pathname+"/",location)),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,_=__md_scope)=>JSON.parse(t.getItem(_.pathname+"."+e)),__md_set=(e,t,_=localStorage,a=__md_scope)=>{try{_.setItem(a.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
+    <script>__md_scope=new URL("../../..",location),__md_scope.pathname.endsWith("/")||(__md_scope=new URL(__md_scope.pathname+"/",location)),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,_=__md_scope)=>JSON.parse(t.getItem(_.pathname+"."+e)),__md_set=(e,t,_=localStorage,a=__md_scope)=>{try{_.setItem(a.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
     
       
 
@@ -67,7 +67,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#45" class="md-skip">
+        <a href="#32-audio-fourier-analysis" class="md-skip">
           コンテンツにスキップ
         </a>
       
@@ -83,7 +83,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="ヘッダー">
-    <a href="../.." title="ピタゴラゲーム ドキュメント" class="md-header__button md-logo" aria-label="ピタゴラゲーム ドキュメント" data-md-component="logo">
+    <a href="../../.." title="ピタゴラゲーム ドキュメント" class="md-header__button md-logo" aria-label="ピタゴラゲーム ドキュメント" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 5v16M20.001 19A2 2 0 0 0 22 17V5a2 2 0 0 0-1.999-2L16 3.002A5 5 0 0 0 12 5a5 5 0 0 0-4-2H4a2 2 0 0 0-2 2v12a2 2 0 0 0 1.999 2H8a5 5 0 0 1 4 2 5 5 0 0 1 4-2z"/></svg>
@@ -103,7 +103,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              4・5. 共通仕様
+              音波フーリエ解析
             
           </span>
         </div>
@@ -156,7 +156,7 @@
 
 <nav class="md-nav md-nav--primary" aria-label="ナビゲーション" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="ピタゴラゲーム ドキュメント" class="md-nav__button md-logo" aria-label="ピタゴラゲーム ドキュメント" data-md-component="logo">
+    <a href="../../.." title="ピタゴラゲーム ドキュメント" class="md-nav__button md-logo" aria-label="ピタゴラゲーム ドキュメント" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 5v16M20.001 19A2 2 0 0 0 22 17V5a2 2 0 0 0-1.999-2L16 3.002A5 5 0 0 0 12 5a5 5 0 0 0-4-2H4a2 2 0 0 0-2 2v12a2 2 0 0 0 1.999 2H8a5 5 0 0 1 4 2 5 5 0 0 1 4-2z"/></svg>
@@ -174,7 +174,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../.." class="md-nav__link">
+      <a href="../../.." class="md-nav__link">
         
   
   
@@ -197,20 +197,18 @@
       
   
   
-    
   
   
-  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
         
           
           <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
@@ -220,7 +218,7 @@
   <span class="md-ellipsis">
     
   
-  仕様書
+  ゲーム仕様
 
     
   </span>
@@ -231,12 +229,12 @@
           </label>
         
         
-          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
             <label class="md-nav__title" for="__nav_2">
               <span class="md-nav__icon md-icon"></span>
               
   
-  仕様書
+  ゲーム仕様
 
             </label>
             <ul class="md-nav__list" data-md-scrollfix>
@@ -248,34 +246,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../SPECIFICATIONS/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-  全体仕様
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-                
-              
-                
-                  
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../" class="md-nav__link">
+      <a href="../../../game/1-game-overview/" class="md-nav__link">
         
   
   
@@ -302,14 +273,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../1-game-overview/" class="md-nav__link">
+      <a href="../../../game/2-gameplay/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-  1. ゲーム概要
+  遊び方
 
     
   </span>
@@ -329,14 +300,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../2-gameplay/" class="md-nav__link">
+      <a href="../../../game/3-1-stage-structure/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-  2. 遊び方
+  ステージ構成
 
     
   </span>
@@ -356,14 +327,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../3-1-stage-structure/" class="md-nav__link">
+      <a href="../../../game/3-2-play-progression/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-  3.1 ステージ構成
+  プレイの進行
 
     
   </span>
@@ -383,14 +354,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../3-2-play-progression/" class="md-nav__link">
+      <a href="../../../game/3-3-clear-and-results/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-  3.2 プレイの進行
+  クリアと結果
 
     
   </span>
@@ -410,14 +381,97 @@
   
   
     <li class="md-nav__item">
-      <a href="../3-3-clear-and-results/" class="md-nav__link">
+      <a href="../../../game/common-specifications/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-  3.3 クリアと結果
+  共通仕様
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  シミュレーター仕様
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+            <label class="md-nav__title" for="__nav_3">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  シミュレーター仕様
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../drop/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  物体落下
 
     
   </span>
@@ -453,7 +507,7 @@
   <span class="md-ellipsis">
     
   
-  4・5. 共通仕様
+  音波フーリエ解析
 
     
   </span>
@@ -470,7 +524,7 @@
   <span class="md-ellipsis">
     
   
-  4・5. 共通仕様
+  音波フーリエ解析
 
     
   </span>
@@ -499,7 +553,7 @@
   <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
-        表示と操作
+        目的
       </span>
     </span>
   </a>
@@ -510,7 +564,7 @@
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
-        画面遷移
+        表示
       </span>
     </span>
   </a>
@@ -521,7 +575,7 @@
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
-        エラーと復旧
+        入力と解析
       </span>
     </span>
   </a>
@@ -532,7 +586,7 @@
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
-        進行状況・データ
+        操作と期待結果
       </span>
     </span>
   </a>
@@ -543,7 +597,7 @@
   <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
-        品質・対応環境
+        確認項目
       </span>
     </span>
   </a>
@@ -554,6 +608,33 @@
   
 </nav>
       
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../resonance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  共鳴現象
+
+    
+  </span>
+  
+  
+
+      </a>
     </li>
   
 
@@ -574,7 +655,33 @@
   
   
     <li class="md-nav__item">
-      <a href="../../development-flow/" class="md-nav__link">
+      <a href="../../../implementation-guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  実装ガイド
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../development-flow/" class="md-nav__link">
         
   
   
@@ -637,7 +744,7 @@
   <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
-        表示と操作
+        目的
       </span>
     </span>
   </a>
@@ -648,7 +755,7 @@
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
-        画面遷移
+        表示
       </span>
     </span>
   </a>
@@ -659,7 +766,7 @@
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
-        エラーと復旧
+        入力と解析
       </span>
     </span>
   </a>
@@ -670,7 +777,7 @@
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
-        進行状況・データ
+        操作と期待結果
       </span>
     </span>
   </a>
@@ -681,7 +788,7 @@
   <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
-        品質・対応環境
+        確認項目
       </span>
     </span>
   </a>
@@ -704,44 +811,33 @@
                   
 
 
-<h1 id="45">4・5. 共通仕様<a class="headerlink" href="#45" title="Permanent link">&para;</a></h1>
-<p>本ページは、ゲーム内の複数画面・ステージで共通して適用する仕様をまとめます。画面固有の仕様と矛盾する場合は、共通の操作・表示ルールを保ったうえで、固有ページに例外と理由を明記します。</p>
-<h2 id="_1">表示と操作<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<h1 id="32-audio-fourier-analysis">3.2 音波フーリエ解析（Audio Fourier Analysis）<a class="headerlink" href="#32-audio-fourier-analysis" title="Permanent link">&para;</a></h1>
+<h2 id="_1">目的<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>入力または生成した音波を時間領域と周波数領域の両方で表示し、波形を構成する周波数成分を比較できるようにします。信号の条件を変更したとき、その変更が波形と解析結果のどちらにも一貫して反映されることを基本とします。</p>
+<h2 id="_2">表示<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <ul>
-<li>画面ごとにタイトルや現在の状態を示し、プレイヤーが現在地を把握できるようにします。</li>
-<li>ボタンや操作対象は、実行できる操作が分かる表示にします。</li>
-<li>操作後は、処理中・成功・未達成・エラーなど、結果に応じた状態を示します。</li>
-<li>無効な操作や連続入力で、画面や進行状態が不整合にならないようにします。</li>
-<li>操作に必要な説明は、プレイ開始前または操作対象の近くに提示します。</li>
+<li><strong>時間領域:</strong> 横軸を時間、縦軸を振幅とする波形を表示します。表示する時間範囲と振幅の基準が分かるようにします。</li>
+<li><strong>周波数領域:</strong> 横軸を周波数、縦軸を成分の大きさとするスペクトルを表示します。基本周波数と高調波など、信号を構成する成分を識別できる表示にします。</li>
+<li>信号の入力・生成条件と、解析に用いる設定を確認できる操作パネルを設けます。</li>
+<li>条件変更後は、対象となる信号と解析結果を更新し、古い条件による表示を新しい結果と誤認させないようにします。</li>
 </ul>
-<h2 id="_2">画面遷移<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<h2 id="_3">入力と解析<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<p>信号は、アプリケーションが生成する信号またはプレイヤーが指定する入力のいずれかを解析対象とします。生成信号では、少なくとも周波数と振幅を個別に指定できる構成を基本案とし、複数成分を組み合わせる場合は各成分の寄与を確認できるようにします。外部音声入力を提供するかどうかは未決定です。</p>
+<p>解析では、入力信号をサンプリングした有限区間から周波数成分を求めます。サンプリング周波数で表現できる上限周波数、および解析区間の長さで決まる周波数分解能を画面または説明で示し、解析設定が結果に与える影響を理解できるようにします。表示するスペクトルの正規化方法や窓関数は実装時に確定し、波形との振幅の対応を説明できるようにします。</p>
+<h2 id="_4">操作と期待結果<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<ol>
+<li>信号の種類または生成条件を選択します。</li>
+<li>必要に応じて解析区間やサンプリングなどの設定を変更します。</li>
+<li>波形とスペクトルを同じ信号から更新します。</li>
+<li>プレイヤーが成分を追加・変更した場合、波形の合成結果とスペクトル内の対応する成分を確認できるようにします。</li>
+</ol>
+<p>入力が空、無音、または解析に必要なデータ量に満たない場合は、誤解を招くスペクトルを表示せず、入力や設定を見直す案内を行います。変更を連続して行った場合は、最新の入力に対応する結果だけを表示します。</p>
+<h2 id="_5">確認項目<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
 <ul>
-<li>遷移の前後で、プレイヤーが選択したステージや操作結果を意図せず失わないようにします。</li>
-<li>破棄されるプレイ状態がある場合は、必要に応じて遷移前に確認します。</li>
-<li>戻る操作を提供する場合は、戻り先と状態の扱いを画面間で一貫させます。</li>
-<li>連続入力により同じ遷移が重複して実行されないようにします。</li>
-</ul>
-<h2 id="_3">エラーと復旧<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
-<ul>
-<li>処理に失敗した場合は、プレイヤーが状況を理解し、再試行または安全な画面へ戻れる案内を行います。</li>
-<li>内部エラーの詳細や機密情報を、そのままプレイヤー向け画面に表示しません。</li>
-<li>一時的なエラーで再試行できる場合は、再試行操作を明確にします。</li>
-<li>復旧できない場合は、プレイ状態や進行状況を不正な状態で更新しません。</li>
-</ul>
-<h2 id="_4">進行状況・データ<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
-<p>進行状況を保存する場合は、保存対象、保存のタイミング、読み込み失敗時の挙動、リセット方法を定義します。保存を実装するまでは、再訪時にもデータが保持されると案内しません。</p>
-<h2 id="_5">品質・対応環境<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
-<ul>
-<li>操作説明や状態表示は、色だけに依存せず文字・形状などでも判別できるようにします。</li>
-<li>文字や操作対象は、対応する画面サイズで読めて操作できることを確認します。</li>
-<li>対応端末・ブラウザー、性能目標、アクセシビリティ対応範囲は、リリース対象に合わせて決定します。</li>
-</ul>
-<p><strong>要確認</strong></p>
-<ul>
-<li>対応端末・ブラウザー・画面サイズ</li>
-<li>保存方式、保存対象、リセット方法</li>
-<li>性能目標、アクセシビリティ対応範囲</li>
-<li>エラー時の表示文言と再試行可能な操作</li>
+<li>生成信号の種類と、外部音声入力を提供するか</li>
+<li>成分数、周波数・振幅・位相の設定範囲と初期値</li>
+<li>サンプリング周波数、解析区間、窓関数、スペクトルの正規化方法</li>
+<li>時間波形・スペクトルの軸範囲、更新タイミング、再生音の有無</li>
 </ul>
 
 
@@ -798,10 +894,10 @@
       
         
         
-      <script id="__config" type="application/json">{"annotate":null,"base":"../..","features":[],"redirect":null,"search":"../../assets/javascripts/workers/search.7d14d953.min.js","tags":null,"translations":{"clipboard.copied":"コピーしました","clipboard.copy":"クリップボードへコピー","clipboard.error":"Could not copy to clipboard","search.result.more.one":"このページ内にもう1件見つかりました","search.result.more.other":"このページ内にあと#件見つかりました","search.result.none":"何も見つかりませんでした","search.result.one":"1件見つかりました","search.result.other":"#件見つかりました","search.result.placeholder":"検索キーワードを入力してください","search.result.term.missing":"検索に含まれない","select.version":"バージョン切り替え"},"version":null}</script>
+      <script id="__config" type="application/json">{"annotate":null,"base":"../../..","features":[],"redirect":null,"search":"../../../assets/javascripts/workers/search.7d14d953.min.js","tags":null,"translations":{"clipboard.copied":"コピーしました","clipboard.copy":"クリップボードへコピー","clipboard.error":"Could not copy to clipboard","search.result.more.one":"このページ内にもう1件見つかりました","search.result.more.other":"このページ内にあと#件見つかりました","search.result.none":"何も見つかりませんでした","search.result.one":"1件見つかりました","search.result.other":"#件見つかりました","search.result.placeholder":"検索キーワードを入力してください","search.result.term.missing":"検索に含まれない","select.version":"バージョン切り替え"},"version":null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.67a597eb.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.67a597eb.min.js"></script>
       
     
   </body>

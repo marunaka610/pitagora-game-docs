@@ -9,28 +9,28 @@
       
       
       
-        <link rel="prev" href="../2-gameplay/">
+        <link rel="prev" href="../../../game/common-specifications/">
       
       
-        <link rel="next" href="../3-2-play-progression/">
+        <link rel="next" href="../audio-fourier/">
       
       
         
       
       
-      <link rel="icon" href="../../assets/images/favicon.png">
+      <link rel="icon" href="../../../assets/images/favicon.png">
       <meta name="generator" content="zensical-0.0.67">
     
     
       
-        <title>3.1 ステージ構成 - ピタゴラゲーム ドキュメント</title>
+        <title>物体落下 - ピタゴラゲーム ドキュメント</title>
       
     
     
       
         
       
-      <link rel="stylesheet" href="../../assets/stylesheets/modern/main.4ae390e2.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/modern/main.4ae390e2.min.css">
       
       
 
@@ -49,7 +49,7 @@
       
     
     
-    <script>__md_scope=new URL("../..",location),__md_scope.pathname.endsWith("/")||(__md_scope=new URL(__md_scope.pathname+"/",location)),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,_=__md_scope)=>JSON.parse(t.getItem(_.pathname+"."+e)),__md_set=(e,t,_=localStorage,a=__md_scope)=>{try{_.setItem(a.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
+    <script>__md_scope=new URL("../../..",location),__md_scope.pathname.endsWith("/")||(__md_scope=new URL(__md_scope.pathname+"/",location)),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,_=__md_scope)=>JSON.parse(t.getItem(_.pathname+"."+e)),__md_set=(e,t,_=localStorage,a=__md_scope)=>{try{_.setItem(a.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
     
       
 
@@ -67,7 +67,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#31" class="md-skip">
+        <a href="#31-drop-simulation" class="md-skip">
           コンテンツにスキップ
         </a>
       
@@ -83,7 +83,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="ヘッダー">
-    <a href="../.." title="ピタゴラゲーム ドキュメント" class="md-header__button md-logo" aria-label="ピタゴラゲーム ドキュメント" data-md-component="logo">
+    <a href="../../.." title="ピタゴラゲーム ドキュメント" class="md-header__button md-logo" aria-label="ピタゴラゲーム ドキュメント" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 5v16M20.001 19A2 2 0 0 0 22 17V5a2 2 0 0 0-1.999-2L16 3.002A5 5 0 0 0 12 5a5 5 0 0 0-4-2H4a2 2 0 0 0-2 2v12a2 2 0 0 0 1.999 2H8a5 5 0 0 1 4 2 5 5 0 0 1 4-2z"/></svg>
@@ -103,7 +103,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              3.1 ステージ構成
+              物体落下
             
           </span>
         </div>
@@ -156,7 +156,7 @@
 
 <nav class="md-nav md-nav--primary" aria-label="ナビゲーション" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="ピタゴラゲーム ドキュメント" class="md-nav__button md-logo" aria-label="ピタゴラゲーム ドキュメント" data-md-component="logo">
+    <a href="../../.." title="ピタゴラゲーム ドキュメント" class="md-nav__button md-logo" aria-label="ピタゴラゲーム ドキュメント" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 5v16M20.001 19A2 2 0 0 0 22 17V5a2 2 0 0 0-1.999-2L16 3.002A5 5 0 0 0 12 5a5 5 0 0 0-4-2H4a2 2 0 0 0-2 2v12a2 2 0 0 0 1.999 2H8a5 5 0 0 1 4 2 5 5 0 0 1 4-2z"/></svg>
@@ -174,7 +174,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../.." class="md-nav__link">
+      <a href="../../.." class="md-nav__link">
         
   
   
@@ -197,20 +197,18 @@
       
   
   
-    
   
   
-  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
         
           
           <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
@@ -220,7 +218,7 @@
   <span class="md-ellipsis">
     
   
-  仕様書
+  ゲーム仕様
 
     
   </span>
@@ -231,12 +229,12 @@
           </label>
         
         
-          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
             <label class="md-nav__title" for="__nav_2">
               <span class="md-nav__icon md-icon"></span>
               
   
-  仕様書
+  ゲーム仕様
 
             </label>
             <ul class="md-nav__list" data-md-scrollfix>
@@ -248,34 +246,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../SPECIFICATIONS/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-  全体仕様
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-                
-              
-                
-                  
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../" class="md-nav__link">
+      <a href="../../../game/1-game-overview/" class="md-nav__link">
         
   
   
@@ -302,14 +273,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../1-game-overview/" class="md-nav__link">
+      <a href="../../../game/2-gameplay/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-  1. ゲーム概要
+  遊び方
 
     
   </span>
@@ -329,14 +300,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../2-gameplay/" class="md-nav__link">
+      <a href="../../../game/3-1-stage-structure/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-  2. 遊び方
+  ステージ構成
 
     
   </span>
@@ -348,6 +319,143 @@
   
 
                 
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../game/3-2-play-progression/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  プレイの進行
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../game/3-3-clear-and-results/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  クリアと結果
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../game/common-specifications/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  共通仕様
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  シミュレーター仕様
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+            <label class="md-nav__title" for="__nav_3">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  シミュレーター仕様
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
               
                 
                   
@@ -372,7 +480,7 @@
   <span class="md-ellipsis">
     
   
-  3.1 ステージ構成
+  物体落下
 
     
   </span>
@@ -389,7 +497,7 @@
   <span class="md-ellipsis">
     
   
-  3.1 ステージ構成
+  物体落下
 
     
   </span>
@@ -429,7 +537,7 @@
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
-        ステージに定義する情報
+        表示
       </span>
     </span>
   </a>
@@ -440,7 +548,7 @@
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
-        ステージ選択
+        物理挙動
       </span>
     </span>
   </a>
@@ -451,7 +559,18 @@
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
-        初期状態と再現性
+        操作と状態
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        確認項目
       </span>
     </span>
   </a>
@@ -474,14 +593,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../3-2-play-progression/" class="md-nav__link">
+      <a href="../audio-fourier/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-  3.2 プレイの進行
+  音波フーリエ解析
 
     
   </span>
@@ -501,41 +620,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../3-3-clear-and-results/" class="md-nav__link">
+      <a href="../resonance/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-  3.3 クリアと結果
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-                
-              
-                
-                  
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../common-specifications/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-  4・5. 共通仕様
+  共鳴現象
 
     
   </span>
@@ -563,7 +655,33 @@
   
   
     <li class="md-nav__item">
-      <a href="../../development-flow/" class="md-nav__link">
+      <a href="../../../implementation-guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  実装ガイド
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../development-flow/" class="md-nav__link">
         
   
   
@@ -637,7 +755,7 @@
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
-        ステージに定義する情報
+        表示
       </span>
     </span>
   </a>
@@ -648,7 +766,7 @@
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
-        ステージ選択
+        物理挙動
       </span>
     </span>
   </a>
@@ -659,7 +777,18 @@
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
-        初期状態と再現性
+        操作と状態
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        確認項目
       </span>
     </span>
   </a>
@@ -682,63 +811,33 @@
                   
 
 
-<h1 id="31">3.1 ステージ構成<a class="headerlink" href="#31" title="Permanent link">&para;</a></h1>
+<h1 id="31-drop-simulation">3.1 物体落下（Drop Simulation）<a class="headerlink" href="#31-drop-simulation" title="Permanent link">&para;</a></h1>
 <h2 id="_1">目的<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<p>ステージは、プレイヤーが課題に挑戦する単位です。ステージごとに開始状態、達成条件、操作対象を定義し、プレイ開始時に必要な情報を提示します。</p>
-<h2 id="_2">ステージに定義する情報<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
-<p>各ステージの仕様には、少なくとも次を記載します。</p>
-<table>
-<thead>
-<tr>
-<th>項目</th>
-<th>内容</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>識別子</td>
-<td>ステージを一意に識別する値</td>
-</tr>
-<tr>
-<td>表示名</td>
-<td>ステージ選択やプレイ中に表示する名前</td>
-</tr>
-<tr>
-<td>課題</td>
-<td>プレイヤーが達成すべきこと</td>
-</tr>
-<tr>
-<td>初期状態</td>
-<td>開始時の盤面・仕掛けの状態</td>
-</tr>
-<tr>
-<td>操作対象</td>
-<td>プレイヤーが操作できる要素と操作方法</td>
-</tr>
-<tr>
-<td>達成条件</td>
-<td>クリアと判定する条件</td>
-</tr>
-<tr>
-<td>再挑戦条件</td>
-<td>初期状態に戻す範囲</td>
-</tr>
-</tbody>
-</table>
-<h2 id="_3">ステージ選択<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
-<p>ステージ選択画面を設ける場合、プレイヤーが各ステージを識別し、選択可能かどうかを判断できる表示にします。未実装・ロック中のステージを選択可能なステージと誤認させないようにします。</p>
-<p>ステージの順序、解放条件、ロック表示、一覧のページ分割は、採用するステージ数と進行ルールに合わせて定めます。</p>
-<h2 id="_4">初期状態と再現性<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<p>物体が重力によって落下し、周囲の物体や床と相互作用する様子を観察するシミュレーションです。トップページで提供している既存機能を基準とし、共通コンテナへの統合後も <code>GameScene.ts</code> と <code>GameSceneControls.ts</code> が担う操作・表示を維持します。</p>
+<h2 id="_2">表示<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <ul>
-<li>同じステージを開始または再挑戦したときは、定義された同じ初期状態から始めます。</li>
-<li>前回の試行中に行った操作は、再挑戦時の初期状態に持ち越しません。</li>
-<li>ステージ更新時は、既存のクリア状況を保持するかどうかを明示してから変更します。</li>
+<li>Phaser の Canvas に、シミュレーション対象の物体、落下領域、衝突対象を表示します。</li>
+<li>物体の位置や接触状態は、物理演算の状態と同期させます。</li>
+<li>操作パネルには、既存のコントロールが提供する操作と設定を表示します。対応する操作対象と現在値が分かり、変更がシーンへ反映されたことを確認できるようにします。</li>
+<li>シミュレーション中であること、および停止・再開・初期状態への復帰が可能な場合は、その状態と操作方法を明示します。</li>
 </ul>
-<p><strong>要確認</strong></p>
+<h2 id="_3">物理挙動<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<p>Matter.js の物理演算を用いて落下と衝突を計算し、その結果を Phaser で描画します。描画上の位置を別途動かして見せるのではなく、物理状態を表示の基準にします。</p>
+<p>開始時の配置、重力の値、物体の形状・物性、衝突対象、既存機能が提供するパラメーターは、既存シーンの挙動を確認して確定します。これらを変更する場合は、既存機能との互換性を保ち、変更される操作と結果を個別に記載します。</p>
+<h2 id="_4">操作と状態<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<ol>
+<li>ページを開くと、シミュレーションの初期状態と既存の操作コントロールを表示します。</li>
+<li>プレイヤーが既存コントロールを操作すると、対応する設定またはシミュレーション状態を更新します。</li>
+<li>物体の運動・衝突を物理演算し、更新された状態を描画します。</li>
+<li>再開始またはリセットが既存機能にある場合は、その操作で定義済みの初期状態へ戻します。</li>
+</ol>
+<p>ページを離れるときは Scene を破棄し、物理演算、イベントリスナー、描画リソースを残しません。再度開いたときに、前の Scene の状態やイベントが重複しないようにします。</p>
+<h2 id="_5">確認項目<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
 <ul>
-<li>ステージ数、名称、公開順</li>
-<li>ステージの解放条件と進行順の制約</li>
-<li>ステージ別の難易度・操作可能要素</li>
+<li>既存コントロールの名称、入力範囲、初期値と各操作の効果</li>
+<li>落下開始の条件、自動開始の有無、停止・再開・リセットの提供状況</li>
+<li>物体・衝突対象の初期配置と物理パラメーター</li>
+<li>シミュレーション時間や速度をプレイヤーが変更できるか</li>
 </ul>
 
 
@@ -795,10 +894,10 @@
       
         
         
-      <script id="__config" type="application/json">{"annotate":null,"base":"../..","features":[],"redirect":null,"search":"../../assets/javascripts/workers/search.7d14d953.min.js","tags":null,"translations":{"clipboard.copied":"コピーしました","clipboard.copy":"クリップボードへコピー","clipboard.error":"Could not copy to clipboard","search.result.more.one":"このページ内にもう1件見つかりました","search.result.more.other":"このページ内にあと#件見つかりました","search.result.none":"何も見つかりませんでした","search.result.one":"1件見つかりました","search.result.other":"#件見つかりました","search.result.placeholder":"検索キーワードを入力してください","search.result.term.missing":"検索に含まれない","select.version":"バージョン切り替え"},"version":null}</script>
+      <script id="__config" type="application/json">{"annotate":null,"base":"../../..","features":[],"redirect":null,"search":"../../../assets/javascripts/workers/search.7d14d953.min.js","tags":null,"translations":{"clipboard.copied":"コピーしました","clipboard.copy":"クリップボードへコピー","clipboard.error":"Could not copy to clipboard","search.result.more.one":"このページ内にもう1件見つかりました","search.result.more.other":"このページ内にあと#件見つかりました","search.result.none":"何も見つかりませんでした","search.result.one":"1件見つかりました","search.result.other":"#件見つかりました","search.result.placeholder":"検索キーワードを入力してください","search.result.term.missing":"検索に含まれない","select.version":"バージョン切り替え"},"version":null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.67a597eb.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.67a597eb.min.js"></script>
       
     
   </body>
