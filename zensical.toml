@@ -4,18 +4,24 @@ docs_dir = "content"
 site_dir = "docs"
 nav = [
   { "ホーム" = "index.md" },
-  { "仕様書" = [
-    { "全体仕様" = "SPECIFICATIONS.md" },
-    { "3.1 物体落下" = "specifications/simulations/drop.md" },
-    { "3.2 音波フーリエ解析" = "specifications/simulations/audio-fourier.md" },
-    { "3.3 共鳴現象" = "specifications/simulations/resonance.md" },
-    { "概要" = "specifications/index.md" },
+  { "ゲーム仕様" = [
+    { "仕様書の概要" = "specifications/index.md" },
     { "1. ゲーム概要" = "specifications/1-game-overview.md" },
     { "2. 遊び方" = "specifications/2-gameplay.md" },
-    { "3.1 ステージ構成" = "specifications/3-1-stage-structure.md" },
-    { "3.2 プレイの進行" = "specifications/3-2-play-progression.md" },
-    { "3.3 クリアと結果" = "specifications/3-3-clear-and-results.md" },
+    { "3. ステージと進行" = [
+      { "3.1 ステージ構成" = "specifications/3-1-stage-structure.md" },
+      { "3.2 プレイの進行" = "specifications/3-2-play-progression.md" },
+      { "3.3 クリアと結果" = "specifications/3-3-clear-and-results.md" },
+    ] },
     { "4・5. 共通仕様" = "specifications/common-specifications.md" },
+  ] },
+  { "シミュレーター仕様" = [
+    { "全体仕様" = "SPECIFICATIONS.md" },
+    { "個別シミュレーション" = [
+      { "3.1 物体落下" = "specifications/simulations/drop.md" },
+      { "3.2 音波フーリエ解析" = "specifications/simulations/audio-fourier.md" },
+      { "3.3 共鳴現象" = "specifications/simulations/resonance.md" },
+    ] },
   ] },
   { "開発フロー" = "development-flow.md" },
 ]
