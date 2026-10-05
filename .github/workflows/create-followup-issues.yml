@@ -87,15 +87,28 @@ jobs:
                   Path(f"/tmp/{target}-issue.md").write_text(body)
           PY
 
+      - name: Check cross-repository issue token
+        id: token
+        if: steps.analyze.outputs.infra == 'true' || steps.analyze.outputs.front == 'true'
+        env:
+          CROSS_REPO_ISSUES_TOKEN: ${{ secrets.CROSS_REPO_ISSUES_TOKEN }}
+        run: |
+          if [ -n "$CROSS_REPO_ISSUES_TOKEN" ]; then
+            echo "available=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "available=false" >> "$GITHUB_OUTPUT"
+            echo "::warning::CROSS_REPO_ISSUES_TOKEN is not configured; follow-up issue creation was skipped."
+          fi
+
       - name: Create infrastructure issue
-        if: steps.analyze.outputs.infra == 'true'
+        if: steps.analyze.outputs.infra == 'true' && steps.token.outputs.available == 'true'
         env:
           GH_TOKEN: ${{ secrets.CROSS_REPO_ISSUES_TOKEN }}
           ISSUE_TITLE: ${{ steps.analyze.outputs.title }}
         run: gh issue create --repo marunaka610/pitagora-game-infra --title "$ISSUE_TITLE" --body-file /tmp/infra-issue.md
 
       - name: Create frontend issue
-        if: steps.analyze.outputs.front == 'true'
+        if: steps.analyze.outputs.front == 'true' && steps.token.outputs.available == 'true'
         env:
           GH_TOKEN: ${{ secrets.CROSS_REPO_ISSUES_TOKEN }}
           ISSUE_TITLE: ${{ steps.analyze.outputs.title }}
