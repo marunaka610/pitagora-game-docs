@@ -27,17 +27,12 @@ jobs:
         run: python -m pip install -r requirements.txt
       - name: Build site
         run: zensical build --clean
-      - name: Publish generated site to Pages source
+      - name: Commit generated site to develop Pages source
         run: |
-          tar -czf /tmp/site.tar.gz docs
-          git fetch origin main
-          git switch --force --detach origin/main
-          rm -rf docs
-          tar -xzf /tmp/site.tar.gz
           git config user.name github-actions[bot]
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
           git add docs
           if ! git diff --cached --quiet; then
             git commit -m "Deploy documentation"
-            git push origin HEAD:main
+            git push origin HEAD:develop
           fi
