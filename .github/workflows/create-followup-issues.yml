@@ -1,0 +1,102 @@
+name: Create follow-up issues
+
+on:
+  pull_request:
+    types:
+      - closed
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  create-issues:
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Analyze diff and prepare issues
+        id: analyze
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+          PR_TITLE: ${{ github.event.pull_request.title }}
+          PR_URL: ${{ github.event.pull_request.html_url }}
+        run: |
+          git diff --no-ext-diff --unified=3 "$BASE_SHA...$HEAD_SHA" -- . ':(exclude)docs/**' > /tmp/docs-diff.patch
+          python - <<'PY'
+          import os
+          import re
+          from pathlib import Path
+
+          diff = Path("/tmp/docs-diff.patch").read_text()
+          rules = {
+              "infra": re.compile(
+                  r"infra(?:structure)?|インフラ|デプロイ|deployment|CI[ /-]?CD|"
+                  r"github actions|docker|container|network|ネットワーク|server|サーバー|"
+                  r"cloud|クラウド|hosting|ホスティング|DNS|SSL|environment|環境構築|運用環境",
+                  re.IGNORECASE,
+              ),
+              "front": re.compile(
+                  r"front(?:end)?|feature|機能|実装|画面|UI|UX|操作|ゲーム|シミュレーション|"
+                  r"ユーザー|コンポーネント|ルーティング|ページ|バグ|bug|gameplay",
+                  re.IGNORECASE,
+              ),
+          }
+
+          matches = {target: pattern.search(diff) is not None for target, pattern in rules.items()}
+          with open(os.environ["GITHUB_OUTPUT"], "a") as output:
+              for target, matched in matches.items():
+                  output.write(f"{target}={'true' if matched else 'false'}\n")
+
+          if not diff:
+              raise SystemExit(0)
+
+          title = re.sub(r"\s+", " ", os.environ["PR_TITLE"]).strip() or "Documentation update"
+          title = f"Docs update: {title}"[:200]
+          with open(os.environ["GITHUB_OUTPUT"], "a") as output:
+              output.write(f"title={title}\n")
+          pr_url = os.environ["PR_URL"]
+          max_diff_chars = 45000
+          excerpt = diff[:max_diff_chars]
+          if len(diff) > max_diff_chars:
+              excerpt += "\n\n[Diff truncated; see the linked pull request for the full change.]"
+          fence = "`" * max(3, max((len(match.group()) for match in re.finditer(r"`+", excerpt)), default=0) + 1)
+
+          roles = {
+              "infra": (
+                  "The documentation diff appears relevant to infrastructure and operations. "
+                  "Review the changes and create or update the required infrastructure implementation."
+              ),
+              "front": (
+                  "The documentation diff appears relevant to product features and frontend implementation. "
+                  "Review the changes and create or update the required feature implementation."
+              ),
+          }
+          for target, matched in matches.items():
+              if matched:
+                  body = (
+                      f"{roles[target]}\n\n"
+                      f"Source pull request: {pr_url}\n\n"
+                      f"{fence}diff\n{excerpt}\n{fence}"
+                  )
+                  Path(f"/tmp/{target}-issue.md").write_text(body)
+          PY
+
+      - name: Create infrastructure issue
+        if: steps.analyze.outputs.infra == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.CROSS_REPO_ISSUES_TOKEN }}
+          ISSUE_TITLE: ${{ steps.analyze.outputs.title }}
+        run: gh issue create --repo marunaka610/pitagora-game-infra --title "$ISSUE_TITLE" --body-file /tmp/infra-issue.md
+
+      - name: Create frontend issue
+        if: steps.analyze.outputs.front == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.CROSS_REPO_ISSUES_TOKEN }}
+          ISSUE_TITLE: ${{ steps.analyze.outputs.title }}
+        run: gh issue create --repo marunaka610/pitagora-game-front --title "$ISSUE_TITLE" --body-file /tmp/front-issue.md
