@@ -4,16 +4,20 @@ docs_dir = "content"
 site_dir = "docs"
 nav = [
   { "ホーム" = "index.md" },
-  { "仕様書" = [
-    { "全体仕様" = "SPECIFICATIONS.md" },
-    { "概要" = "specifications/index.md" },
-    { "1. ゲーム概要" = "specifications/1-game-overview.md" },
-    { "2. 遊び方" = "specifications/2-gameplay.md" },
-    { "3.1 ステージ構成" = "specifications/3-1-stage-structure.md" },
-    { "3.2 プレイの進行" = "specifications/3-2-play-progression.md" },
-    { "3.3 クリアと結果" = "specifications/3-3-clear-and-results.md" },
-    { "4・5. 共通仕様" = "specifications/common-specifications.md" },
+  { "ゲーム仕様" = [
+    { "概要" = "game/1-game-overview.md" },
+    { "遊び方" = "game/2-gameplay.md" },
+    { "ステージ構成" = "game/3-1-stage-structure.md" },
+    { "プレイの進行" = "game/3-2-play-progression.md" },
+    { "クリアと結果" = "game/3-3-clear-and-results.md" },
+    { "共通仕様" = "game/common-specifications.md" },
   ] },
+  { "シミュレーター仕様" = [
+    { "物体落下" = "specifications/simulations/drop.md" },
+    { "音波フーリエ解析" = "specifications/simulations/audio-fourier.md" },
+    { "共鳴現象" = "specifications/simulations/resonance.md" },
+  ] },
+  { "実装ガイド" = "implementation-guide.md" },
   { "開発フロー" = "development-flow.md" },
 ]
 
