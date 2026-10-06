@@ -860,9 +860,9 @@
 <h2 id="_5">リポジトリ間の自動連携<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
 <ul>
 <li>このリポジトリの <code>develop</code> への push で Zensical をビルドし、生成物を <code>develop/docs</code> にコミットします。</li>
-<li><code>main</code> を対象とするプルリクエストがマージされると、GitHub Actions が <code>docs/</code> を除く差分を調べます。</li>
-<li>差分にインフラ関連のキーワードがあれば <code>pitagora-game-infra</code>、機能実装関連のキーワードがあれば <code>pitagora-game-front</code> に issue を作成します。両方に該当する場合は両方に作成します。</li>
-<li>自動判定は差分中のキーワードに基づくため、誤判定や対象漏れがあり得ます。必要な実装タスクが作成されていない場合は、担当者が手動で補います。</li>
+<li><code>main</code> を対象とするプルリクエストがマージされると、GitHub Actions が変更ファイルごとに issue を作成します。</li>
+<li><code>content/</code> の変更は <code>pitagora-game-front</code>、Actions・ビルド設定（<code>.github/</code>、<code>requirements.txt</code>、<code>zensical.toml</code>）の変更は <code>pitagora-game-infra</code> が対象です。生成物 <code>docs/</code> の変更は除外します。</li>
+<li>issue には変更ファイルと元のプルリクエストを記載します。対象外のファイルに必要な実装タスクがある場合は、担当者が手動で補います。</li>
 <li>issue 作成には、両リポジトリへの書き込み権限を持つ <code>CROSS_REPO_ISSUES_TOKEN</code> が Actions secret に設定されている必要があります。</li>
 </ul>
 <p>この自動 issue 作成は <code>main</code> 向けプルリクエストのマージ時に動作します。通常の仕様レビュー・公開先として定めた <code>develop</code> 向けフローとは分けて扱います。</p>
