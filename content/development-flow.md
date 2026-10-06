@@ -45,9 +45,9 @@ flowchart TD
 ## リポジトリ間の自動連携
 
 - このリポジトリの `develop` への push で Zensical をビルドし、生成物を `develop/docs` にコミットします。
-- `main` を対象とするプルリクエストがマージされると、GitHub Actions が `docs/` を除く差分を調べます。
-- 差分にインフラ関連のキーワードがあれば `pitagora-game-infra`、機能実装関連のキーワードがあれば `pitagora-game-front` に issue を作成します。両方に該当する場合は両方に作成します。
-- 自動判定は差分中のキーワードに基づくため、誤判定や対象漏れがあり得ます。必要な実装タスクが作成されていない場合は、担当者が手動で補います。
+- `main` を対象とするプルリクエストがマージされると、GitHub Actions が変更ファイルごとに issue を作成します。
+- `content/` の変更は `pitagora-game-front`、Actions・ビルド設定（`.github/`、`requirements.txt`、`zensical.toml`）の変更は `pitagora-game-infra` が対象です。生成物 `docs/` の変更は除外します。
+- issue には変更ファイルと元のプルリクエストを記載します。対象外のファイルに必要な実装タスクがある場合は、担当者が手動で補います。
 - issue 作成には、両リポジトリへの書き込み権限を持つ `CROSS_REPO_ISSUES_TOKEN` が Actions secret に設定されている必要があります。
 
 この自動 issue 作成は `main` 向けプルリクエストのマージ時に動作します。通常の仕様レビュー・公開先として定めた `develop` 向けフローとは分けて扱います。

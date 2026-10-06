@@ -1,191 +1,67 @@
-name: Create spec-based issues
+name: Create implementation issues from PR changes
 
 on:
-  workflow_dispatch:
-    inputs:
-      target_repo:
-        description: Target repository to create issues in
-        required: true
-        default: marunaka610/pitagora-game-front
+  pull_request_target:
+    branches:
+      - main
+    types:
+      - closed
 
 permissions:
-  contents: read
+  pull-requests: read
 
 jobs:
-  create-spec-issues:
+  create-issues:
+    if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-
-      - name: Create Drop Simulation improvement issues
+      - name: Create issues for changed files
         env:
-          GH_TOKEN: ${{ secrets.CROSS_REPO_ISSUES_TOKEN }}
-          REPO: ${{ github.event.inputs.target_repo }}
+          GH_TOKEN: ${{ github.token }}
+          ISSUES_TOKEN: ${{ secrets.CROSS_REPO_ISSUES_TOKEN }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          PR_TITLE: ${{ github.event.pull_request.title }}
+          PR_URL: ${{ github.event.pull_request.html_url }}
+          REPOSITORY: ${{ github.repository }}
+          FRONT_REPOSITORY: marunaka610/pitagora-game-front
+          INFRA_REPOSITORY: marunaka610/pitagora-game-infra
         run: |
-          # Issue 1: Drop Simulation - 停止・再開機能
-          gh issue create --repo "$REPO" \
-            --title "Drop Simulation: 停止・再開・リセット機能の実装" \
-            --body "## 仕様との差分
+          gh api --paginate --jq '.[] | @base64' \
+            "repos/$REPOSITORY/pulls/$PR_NUMBER/files" \
+            > "$RUNNER_TEMP/changed-files.txt"
 
-仕様書 \`content/specifications/simulations/drop.md\` より：
+          export GH_TOKEN="$ISSUES_TOKEN"
 
-### 確認項目
-- 落下開始の条件、自動開始の有無、**停止・再開・リセットの提供状況**
+          while IFS= read -r encoded_file; do
+            file=$(printf '%s' "$encoded_file" | base64 --decode)
+            filename=$(jq -r '.filename' <<< "$file")
 
-### 現在の実装
-- 開始と再試行のみ実装
-- 落下中の一時停止機能なし
-- 明示的なリセット機能なし
+            case "$filename" in
+              docs/*)
+                continue
+                ;;
+              content/*)
+                target_repo=$FRONT_REPOSITORY
+                ;;
+              .github/*|requirements.txt|zensical.toml)
+                target_repo=$INFRA_REPOSITORY
+                ;;
+              *)
+                continue
+                ;;
+            esac
 
-### 実装内容
-1. 停止ボタンの追加（落下中に押下可能）
-2. 再開ボタンの追加（停止中に押下可能）
-3. リセットボタンの追加（シーン初期状態への復帰）
-4. 状態表示の更新（停止中、再開可能など）
+            body=$(cat <<EOF
+          This follow-up issue was generated from PR #$PR_NUMBER: $PR_TITLE
 
-### 参考
-- 仕様書：https://github.com/marunaka610/pitagora-game-docs/blob/main/content/specifications/simulations/drop.md
-" \
-            --label enhancement
+          Review the changes to \`$filename\` and create or update the implementation tasks needed to reflect them.
 
-          # Issue 2: Drop Simulation - 物理パラメーター確認
-          gh issue create --repo "$REPO" \
-            --title "Drop Simulation: 物理パラメーターの仕様確認と実装" \
-            --body "## 仕様との差分
+          Source: $PR_URL
+          EOF
+          )
 
-仕様書 \`content/specifications/simulations/drop.md\` より：
-
-### 確認項目
-- **物体・衝突対象の初期配置と物理パラメーター**
-- **シミュレーション時間や速度をプレイヤーが変更できるか**
-
-### 現在の実装
-- 物理パラメーター（重力、摩擦、反発）はハードコード
-- シミュレーション速度の変更機能なし
-- パラメーター値の仕様確認が必要
-
-### 実装内容
-1. 仕様書に基づいて物理パラメーターの値を確認・整理
-2. 必要に応じてシミュレーション速度調整UI追加
-3. パラメーター値を環境定義化
-
-### 参考
-- 仕様書：https://github.com/marunaka610/pitagora-game-docs/blob/main/content/specifications/simulations/drop.md
-" \
-            --label enhancement
-
-      - name: Create Audio Fourier Analysis issue
-        env:
-          GH_TOKEN: ${{ secrets.CROSS_REPO_ISSUES_TOKEN }}
-          REPO: ${{ github.event.inputs.target_repo }}
-        run: |
-          gh issue create --repo "$REPO" \
-            --title "Audio Fourier Analysis シーンの実装" \
-            --body "## 仕様
-
-仕様書 \`content/specifications/simulations/audio-fourier.md\` を参照
-
-## 実装スコープ
-
-### 表示
-- **時間領域:** 横軸を時間、縦軸を振幅とする波形表示
-- **周波数領域:** 横軸を周波数、縦軸を成分の大きさとするスペクトル表示
-- 信号の入力・生成条件と解析設定を確認できるパネル
-
-### 入力と解析
-- 信号生成条件の設定（少なくとも周波数と振幅）
-- サンプリング周波数、解析区間、窓関数の設定
-- 条件変更後の波形・スペクトル自動更新
-
-### 実装前の確認項目
-- 生成信号の種類と外部音声入力の提供有無
-- 成分数、周波数・振幅・位相の設定範囲と初期値
-- サンプリング周波数、解析区間、窓関数、スペクトルの正規化方法
-- 時間波形・スペクトルの軸範囲、更新タイミング、再生音の有無
-
-## 参考
-- 仕様書：https://github.com/marunaka610/pitagora-game-docs/blob/main/content/specifications/simulations/audio-fourier.md
-" \
-            --label enhancement
-
-      - name: Create Resonance Phenomenon issue
-        env:
-          GH_TOKEN: ${{ secrets.CROSS_REPO_ISSUES_TOKEN }}
-          REPO: ${{ github.event.inputs.target_repo }}
-        run: |
-          gh issue create --repo "$REPO" \
-            --title "Resonance Phenomenon シーンの実装" \
-            --body "## 仕様
-
-仕様書 \`content/specifications/simulations/resonance.md\` を参照
-
-## 実装スコープ
-
-### 物理モデル
-1自由度の減衰振動系：
-\`\`\`
-m·ẍ + c·ẋ + k·x = F₀·sin(2πft)
-\`\`\`
-
-- m: 質量
-- c: 減衰係数
-- k: ばね定数
-- F₀: 外力の振幅
-- f: 外力の周波数
-
-### 表示
-- 振動体の変位を平衡位置とともに表示
-- 時間経過に対する変位を表示（外力の周期と応答を比較可能）
-- 外力周波数を変化させたときの応答振幅変化を表示
-- 減衰を比較できる表示
-
-### 操作
-- 外力の周波数変更（基本操作）
-- 減衰の変更
-- 質量、ばね定数、外力の振幅設定（物理モデル採用時）
-- 停止・再開・リセット
-
-### 実装前の確認項目
-- 減衰振動系のモデル、初期条件、単位系
-- 各パラメーターの範囲・初期値と操作中の再計算方法
-- 変位表示、周波数応答表示、共鳴を示す補助表示の具体的な形式
-- 停止・再開・リセット時にパラメーター値を保持するか
-
-## 参考
-- 仕様書：https://github.com/marunaka610/pitagora-game-docs/blob/main/content/specifications/simulations/resonance.md
-" \
-            --label enhancement
-
-      - name: Create multi-scene support issue
-        env:
-          GH_TOKEN: ${{ secrets.CROSS_REPO_ISSUES_TOKEN }}
-          REPO: ${{ github.event.inputs.target_repo }}
-        run: |
-          gh issue create --repo "$REPO" \
-            --title "マルチシーン対応とルーティング機構の構築" \
-            --body "## 概要
-
-現在は単一シーン（GameScene）のみ。複数のシミュレーション（Drop、Audio Fourier、Resonance）をシーン単位で管理し、画面間を遷移できる機構が必要。
-
-## 実装スコープ
-
-### シーン構成
-- DROP LAB（既存：GameScene）
-- Audio Fourier Analysis（新規）
-- Resonance Phenomenon（新規）
-- ホーム・ナビゲーション画面（新規）
-
-### ルーティング機構
-- シーン間の遷移ロジック
-- パラメーター引き継ぎ（必要に応じて）
-- 戻る・次へなどのナビゲーション操作
-
-### 共通 UI
-- 実装ガイド（implementation-guide.md）に基づくアプリケーション構成
-- シーン共通のパネル・ヘッダー
-- ナビゲーションコンポーネント
-
-## 参考
-- 実装ガイド：https://github.com/marunaka610/pitagora-game-docs/blob/main/content/implementation-guide.md
-" \
-            --label enhancement
+            gh issue create \
+              --repo "$target_repo" \
+              --title "Follow-up: $filename (PR #$PR_NUMBER)" \
+              --body "$body"
+          done < "$RUNNER_TEMP/changed-files.txt"
